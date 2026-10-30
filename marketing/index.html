@@ -1,0 +1,1564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LiveJoeDreamz — Mobile Marketing Assets & App Store Studio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Russo+One&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-space: #051424;
+      --card-bg: #0a1929;
+      --card-border: #1a2d42;
+      --cyan: #00dbe9;
+      --cyan-glow: rgba(0, 219, 233, 0.35);
+      --pink: #ec4899;
+      --gold: #f59e0b;
+      --yellow: #eab308;
+      --sky: #38bdf8;
+      --text-white: #f8fafc;
+      --text-muted: #94a3b8;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-space);
+      color: var(--text-white);
+      font-family: 'Geist', -apple-system, BlinkMacSystemFont, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+    }
+
+    /* Top Studio Navigation Bar */
+    header {
+      background: rgba(10, 25, 41, 0.85);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--card-border);
+      padding: 16px 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .brand-title {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-crest {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, #00dbe9, #0a1929);
+      border: 1px solid var(--cyan);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Russo One', sans-serif;
+      font-size: 14px;
+      color: #051424;
+      font-weight: 900;
+      box-shadow: 0 0 16px var(--cyan-glow);
+    }
+
+    .brand-name {
+      font-family: 'Russo One', sans-serif;
+      letter-spacing: 1px;
+      font-size: 18px;
+      color: #fff;
+    }
+
+    .brand-tag {
+      font-size: 11px;
+      color: var(--cyan);
+      background: rgba(0, 219, 233, 0.12);
+      border: 1px solid rgba(0, 219, 233, 0.25);
+      padding: 3px 8px;
+      border-radius: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .btn {
+      cursor: pointer;
+      font-family: 'Geist', sans-serif;
+      font-weight: 600;
+      font-size: 13px;
+      padding: 10px 18px;
+      border-radius: 8px;
+      border: none;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+    }
+
+    .btn-cyan {
+      background: var(--cyan);
+      color: #051424;
+      box-shadow: 0 0 16px var(--cyan-glow);
+    }
+
+    .btn-cyan:hover {
+      background: #33e4ee;
+      transform: translateY(-1px);
+      box-shadow: 0 0 24px rgba(0, 219, 233, 0.55);
+    }
+
+    .btn-secondary {
+      background: #0d2238;
+      color: #e2e8f0;
+      border: 1px solid var(--card-border);
+    }
+
+    .btn-secondary:hover {
+      background: #142e4b;
+      border-color: rgba(0, 219, 233, 0.4);
+    }
+
+    /* Main Studio Layout */
+    .studio-container {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      flex: 1;
+      min-height: calc(100vh - 73px);
+    }
+
+    /* Left Control Sidebar */
+    aside.sidebar {
+      background: #071829;
+      border-right: 1px solid var(--card-border);
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      overflow-y: auto;
+    }
+
+    .control-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .control-label {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--text-muted);
+    }
+
+    .segmented-control {
+      display: flex;
+      background: #0a1b2d;
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      padding: 4px;
+      gap: 4px;
+    }
+
+    .segment-btn {
+      flex: 1;
+      padding: 8px 10px;
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      font-size: 12px;
+      font-weight: 600;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      text-align: center;
+    }
+
+    .segment-btn.active {
+      background: var(--cyan);
+      color: #051424;
+      font-weight: 700;
+      box-shadow: 0 0 10px var(--cyan-glow);
+    }
+
+    /* Screen Selector List */
+    .screen-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .screen-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 10px 14px;
+      background: #0a1b2d;
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .screen-item:hover {
+      border-color: rgba(0, 219, 233, 0.4);
+      background: #0e243c;
+    }
+
+    .screen-item.active {
+      border-color: var(--cyan);
+      background: rgba(0, 219, 233, 0.08);
+      box-shadow: 0 0 12px rgba(0, 219, 233, 0.18);
+    }
+
+    .screen-number {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      background: #142a42;
+      color: var(--cyan);
+      font-size: 11px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .screen-item.active .screen-number {
+      background: var(--cyan);
+      color: #051424;
+    }
+
+    .screen-item-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .screen-item-title {
+      font-size: 12px;
+      font-weight: 700;
+      color: #f1f5f9;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .screen-item-sub {
+      font-size: 10px;
+      color: var(--text-muted);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    /* Live Text Customizer Inputs */
+    .input-field {
+      width: 100%;
+      background: #0a1b2d;
+      border: 1px solid var(--card-border);
+      border-radius: 6px;
+      padding: 10px 12px;
+      color: #fff;
+      font-size: 13px;
+      font-family: inherit;
+      outline: none;
+      transition: border-color 0.2s ease;
+    }
+
+    .input-field:focus {
+      border-color: var(--cyan);
+      box-shadow: 0 0 8px var(--cyan-glow);
+    }
+
+    textarea.input-field {
+      resize: vertical;
+      min-height: 64px;
+    }
+
+    /* Canvas Stage Area */
+    main.stage {
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      background: radial-gradient(circle at 50% 30%, #082038 0%, #051424 70%);
+      overflow: auto;
+    }
+
+    .canvas-wrapper {
+      position: relative;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.7), 0 0 30px rgba(0, 219, 233, 0.15);
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid rgba(0, 219, 233, 0.25);
+      background: #000;
+      transition: transform 0.2s ease;
+    }
+
+    canvas {
+      display: block;
+      max-height: 75vh;
+      width: auto;
+      height: auto;
+    }
+
+    /* Bottom Info & Export Status */
+    .stage-footer {
+      margin-top: 20px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .badge-res {
+      background: #0d2238;
+      border: 1px solid var(--card-border);
+      padding: 4px 10px;
+      border-radius: 6px;
+      color: var(--cyan);
+      font-family: monospace;
+      font-size: 12px;
+    }
+
+    /* Toast Notification */
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: #0a1929;
+      border: 1px solid var(--cyan);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 20px var(--cyan-glow);
+      padding: 14px 20px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      color: #fff;
+      display: none;
+      align-items: center;
+      gap: 10px;
+      z-index: 1000;
+    }
+
+    .toast.show {
+      display: flex;
+      animation: slideUp 0.3s ease;
+    }
+
+    @keyframes slideUp {
+      from { transform: translateY(20px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Navigation Bar -->
+  <header>
+    <div class="brand-title">
+      <div class="brand-crest">JD</div>
+      <div>
+        <div style="display:flex; align-items:center; gap:8px;">
+          <span class="brand-name">LIVEJOEDREAMZ</span>
+          <span class="brand-tag">App Store Studio</span>
+        </div>
+        <div style="font-size: 11px; color: var(--text-muted);">Marketing Assets & High-Res PNG Generator</div>
+      </div>
+    </div>
+
+    <div class="header-actions">
+      <button class="btn btn-secondary" onclick="exportCurrentPNG()">
+        <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"></path></svg>
+        Download Current PNG
+      </button>
+      <button class="btn btn-cyan" onclick="exportAllPNGs()">
+        <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+        Export Complete Store Kit (All)
+      </button>
+    </div>
+  </header>
+
+  <!-- Studio Workspace -->
+  <div class="studio-container">
+    
+    <!-- Left Configuration Sidebar -->
+    <aside class="sidebar">
+      
+      <!-- Platform Selector -->
+      <div class="control-group">
+        <label class="control-label">Target Platform / Specs</label>
+        <div class="segmented-control" id="platformControl">
+          <button class="segment-btn active" onclick="setPlatform('ios')">iOS (1290×2796)</button>
+          <button class="segment-btn" onclick="setPlatform('android')">Android (1080×2400)</button>
+        </div>
+      </div>
+
+      <!-- Screen Selector -->
+      <div class="control-group">
+        <label class="control-label">Choose Marketing Asset</label>
+        <div class="screen-list" id="screenListContainer">
+          <!-- Screen items rendered dynamically by JS -->
+        </div>
+      </div>
+
+      <!-- Headline & Subtitle Editor -->
+      <div class="control-group">
+        <label class="control-label">Headline (Russo One)</label>
+        <input type="text" class="input-field" id="headlineInput" oninput="updateActiveText()">
+      </div>
+
+      <div class="control-group">
+        <label class="control-label">Sub-headline / Value Prop</label>
+        <textarea class="input-field" id="subtitleInput" oninput="updateActiveText()"></textarea>
+      </div>
+
+      <!-- Quick Tips -->
+      <div style="background: rgba(0, 219, 233, 0.05); border: 1px solid rgba(0, 219, 233, 0.2); border-radius: 8px; padding: 12px; font-size: 11px; line-height: 1.5; color: #94a3b8;">
+        <strong style="color: var(--cyan); display:block; margin-bottom: 4px;">✦ Anti-Slop Enforced:</strong>
+        Screenshots render with clean flat minimalist bezels, high-contrast athletic typography, and signature deep space starfield tokens without AI distortion.
+      </div>
+    </aside>
+
+    <!-- Main Canvas Stage Area -->
+    <main class="stage">
+      <div class="canvas-wrapper">
+        <canvas id="studioCanvas"></canvas>
+      </div>
+      <div class="stage-footer">
+        <span>Canvas Resolution:</span>
+        <span class="badge-res" id="resolutionBadge">1290 × 2796 px</span>
+        <span>•</span>
+        <span id="screenNameBadge">Screen 1: Home / VIP Brand Hook</span>
+      </div>
+    </main>
+
+  </div>
+
+  <!-- Toast Notification -->
+  <div class="toast" id="studioToast">
+    <svg width="18" height="18" fill="none" stroke="var(--cyan)" stroke-width="2" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"></path></svg>
+    <span id="toastMessage">High-res PNG downloaded successfully!</span>
+  </div>
+
+  <script>
+    // State Model
+    const state = {
+      platform: 'ios', // 'ios' (1290x2796), 'android' (1080x2400)
+      activeScreenId: 'screen1',
+      screens: [
+        {
+          id: 'screen1',
+          type: 'screenshot',
+          name: 'Home / VIP Experience',
+          headline: 'LIVE YOUR DREAMS',
+          subtitle: 'Your all-in-one hub for daily growth, purpose & community.',
+          renderFunc: 'renderHomeScreen'
+        },
+        {
+          id: 'screen2',
+          type: 'screenshot',
+          name: 'Interactive 3D Journal',
+          headline: 'INTERACTIVE 3D JOURNAL',
+          subtitle: 'Daily reflection guided by the 5 Pillars of D.R.E.A.M.',
+          renderFunc: 'renderJournalScreen'
+        },
+        {
+          id: 'screen3',
+          type: 'screenshot',
+          name: 'Book Club & Chat',
+          headline: 'REAL-TIME COMMUNITY CHAT',
+          subtitle: 'Discuss books, share reflections & react with emojis.',
+          renderFunc: 'renderChatScreen'
+        },
+        {
+          id: 'screen4',
+          type: 'screenshot',
+          name: 'Exclusive Media & Podcast',
+          headline: 'STREAM EXCLUSIVE MEDIA',
+          subtitle: 'Watch HD episodes, assemblies & the D.R.E.A.M. podcast.',
+          renderFunc: 'renderMediaScreen'
+        },
+        {
+          id: 'screen5',
+          type: 'screenshot',
+          name: 'Dream Closet Merch',
+          headline: 'OFFICIAL STREETWEAR & MERCH',
+          subtitle: 'Shop exclusive drops with seamless, instant checkout.',
+          renderFunc: 'renderMerchScreen'
+        },
+        {
+          id: 'feature_graphic',
+          type: 'banner',
+          name: 'Google Play Feature Graphic',
+          headline: 'LIVE YOUR DREAMS',
+          subtitle: 'The Official App for Youth Empowerment & Community',
+          renderFunc: 'renderFeatureGraphic'
+        },
+        {
+          id: 'master_icon',
+          type: 'icon',
+          name: 'Master App Store Icon',
+          headline: 'LIVEJOEDREAMZ',
+          subtitle: 'Official 1024x1024 Master High-Res Crest',
+          renderFunc: 'renderMasterIcon'
+        }
+      ]
+    };
+
+    const canvas = document.getElementById('studioCanvas');
+    const ctx = canvas.getContext('2d');
+
+    function init() {
+      renderScreenList();
+      loadScreen(state.activeScreenId);
+    }
+
+    function renderScreenList() {
+      const container = document.getElementById('screenListContainer');
+      container.innerHTML = state.screens.map((s, index) => {
+        const isSelected = s.id === state.activeScreenId;
+        const badgeText = s.type === 'screenshot' ? (index + 1) : (s.type === 'banner' ? 'FG' : 'IC');
+        return `
+          <div class="screen-item ${isSelected ? 'active' : ''}" onclick="selectScreen('${s.id}')">
+            <div class="screen-number">${badgeText}</div>
+            <div class="screen-item-info">
+              <div class="screen-item-title">${s.name}</div>
+              <div class="screen-item-sub">${s.headline}</div>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function selectScreen(id) {
+      state.activeScreenId = id;
+      renderScreenList();
+      loadScreen(id);
+    }
+
+    function loadScreen(id) {
+      const screen = state.screens.find(s => s.id === id);
+      if (!screen) return;
+
+      document.getElementById('headlineInput').value = screen.headline;
+      document.getElementById('subtitleInput').value = screen.subtitle;
+      document.getElementById('screenNameBadge').innerText = screen.name;
+
+      drawCurrentCanvas();
+    }
+
+    function updateActiveText() {
+      const screen = state.screens.find(s => s.id === state.activeScreenId);
+      if (!screen) return;
+      screen.headline = document.getElementById('headlineInput').value;
+      screen.subtitle = document.getElementById('subtitleInput').value;
+      renderScreenList();
+      drawCurrentCanvas();
+    }
+
+    function setPlatform(platform) {
+      state.platform = platform;
+      document.querySelectorAll('#platformControl .segment-btn').forEach((btn, idx) => {
+        btn.classList.toggle('active', (idx === 0 && platform === 'ios') || (idx === 1 && platform === 'android'));
+      });
+      drawCurrentCanvas();
+    }
+
+    // Resolution calculation
+    function getCanvasDimensions() {
+      const screen = state.screens.find(s => s.id === state.activeScreenId);
+      if (screen.id === 'feature_graphic') {
+        return { w: 1024, h: 500, label: '1024 × 500 px (Google Play Feature Graphic)' };
+      }
+      if (screen.id === 'master_icon') {
+        return { w: 1024, h: 1024, label: '1024 × 1024 px (Master App Store Icon)' };
+      }
+      if (state.platform === 'ios') {
+        return { w: 1290, h: 2796, label: '1290 × 2796 px (Apple 6.7" Super Retina)' };
+      } else {
+        return { w: 1080, h: 2400, label: '1080 × 2400 px (Android 20:9 Modern Phone)' };
+      }
+    }
+
+    // Main Draw Orchestrator
+    function drawCurrentCanvas() {
+      const dims = getCanvasDimensions();
+      canvas.width = dims.w;
+      canvas.height = dims.h;
+      document.getElementById('resolutionBadge').innerText = dims.label;
+
+      const screen = state.screens.find(s => s.id === state.activeScreenId);
+      if (screen.id === 'feature_graphic') {
+        drawGooglePlayFeatureGraphic(screen);
+      } else if (screen.id === 'master_icon') {
+        drawMasterIcon(screen);
+      } else {
+        drawStoreScreenshot(screen, dims.w, dims.h);
+      }
+    }
+
+    // Helper: Draw Deep Space Background with Stars
+    function drawDeepSpaceBackground(width, height) {
+      // Cosmic gradient
+      const bgGrad = ctx.createLinearGradient(0, 0, width * 0.8, height);
+      bgGrad.addColorStop(0, '#040e1b');
+      bgGrad.addColorStop(0.35, '#051424');
+      bgGrad.addColorStop(0.7, '#07182c');
+      bgGrad.addColorStop(1, '#030b14');
+      ctx.fillStyle = bgGrad;
+      ctx.fillRect(0, 0, width, height);
+
+      // Cyan radial ambience at top & center
+      const aura = ctx.createRadialGradient(width * 0.5, height * 0.35, 50, width * 0.5, height * 0.45, width * 0.75);
+      aura.addColorStop(0, 'rgba(0, 219, 233, 0.12)');
+      aura.addColorStop(0.6, 'rgba(0, 219, 233, 0.02)');
+      aura.addColorStop(1, 'rgba(0, 0, 0, 0)');
+      ctx.fillStyle = aura;
+      ctx.fillRect(0, 0, width, height);
+
+      // Seeded Star Particles
+      const starCount = 130;
+      for (let i = 0; i < starCount; i++) {
+        const x = (Math.sin(i * 997) * 0.5 + 0.5) * width;
+        const y = (Math.cos(i * 359) * 0.5 + 0.5) * height;
+        const r = (i % 5 === 0) ? 1.8 : ((i % 3 === 0) ? 1.2 : 0.7);
+        const alpha = (i % 4 === 0) ? 0.75 : 0.35;
+        
+        ctx.fillStyle = `rgba(255, 255, 255, ${alpha})`;
+        ctx.beginPath();
+        ctx.arc(x, y, r, 0, Math.PI * 2);
+        ctx.fill();
+
+        // Subtle cyan glint on bigger stars
+        if (i % 11 === 0) {
+          ctx.fillStyle = 'rgba(0, 219, 233, 0.6)';
+          ctx.beginPath();
+          ctx.arc(x, y, r * 2.2, 0, Math.PI * 2);
+          ctx.fill();
+        }
+      }
+    }
+
+    // Helper: Rounded Rectangle
+    function roundRect(ctx, x, y, width, height, radius) {
+      if (typeof radius === 'number') {
+        radius = {tl: radius, tr: radius, br: radius, bl: radius};
+      }
+      ctx.beginPath();
+      ctx.moveTo(x + radius.tl, y);
+      ctx.lineTo(x + width - radius.tr, y);
+      ctx.quadraticCurveTo(x + width, y, x + width, y + radius.tr);
+      ctx.lineTo(x + width, y + height - radius.br);
+      ctx.quadraticCurveTo(x + width, y + height, x + width - radius.br, y + height);
+      ctx.lineTo(x + radius.bl, y + height);
+      ctx.quadraticCurveTo(x, y + height, x, y + height - radius.bl);
+      ctx.lineTo(x, y + radius.tl);
+      ctx.quadraticCurveTo(x, y, x + radius.tl, y);
+      ctx.closePath();
+    }
+
+    // Render Store Screenshot Frame & Typographic Header
+    function drawStoreScreenshot(screen, width, height) {
+      drawDeepSpaceBackground(width, height);
+
+      // 1. Athletic Header Typography
+      const headerY = height * 0.085;
+      
+      // Brand pill tag above title
+      const tagText = "LIVEJOEDREAMZ • OFFICIAL APP";
+      ctx.font = "700 " + Math.round(width * 0.024) + "px 'Geist', sans-serif";
+      ctx.fillStyle = "#00dbe9";
+      ctx.textAlign = "center";
+      ctx.fillText(tagText, width / 2, headerY - (width * 0.025));
+
+      // Main Headline (Russo One)
+      ctx.font = "900 " + Math.round(width * 0.065) + "px 'Russo One', sans-serif";
+      
+      // Subtle chrome metallic gradient for title
+      const titleGrad = ctx.createLinearGradient(0, headerY, 0, headerY + width * 0.07);
+      titleGrad.addColorStop(0, '#ffffff');
+      titleGrad.addColorStop(0.7, '#e2e8f0');
+      titleGrad.addColorStop(1, '#94a3b8');
+      ctx.fillStyle = titleGrad;
+      ctx.fillText(screen.headline, width / 2, headerY + (width * 0.055));
+
+      // Sub-headline
+      ctx.font = "500 " + Math.round(width * 0.032) + "px 'Geist', sans-serif";
+      ctx.fillStyle = "#94a3b8";
+      ctx.fillText(screen.subtitle, width / 2, headerY + (width * 0.105));
+
+      // 2. Clean Flat Minimalist Phone Mockup
+      const phoneWidth = width * 0.84;
+      const phoneHeight = height * 0.77;
+      const phoneX = (width - phoneWidth) / 2;
+      const phoneY = height * 0.245;
+      const cornerRadius = width * 0.08;
+
+      // Soft drop shadow underneath phone
+      ctx.save();
+      ctx.shadowColor = 'rgba(0, 0, 0, 0.85)';
+      ctx.shadowBlur = 60;
+      ctx.shadowOffsetY = 30;
+      ctx.fillStyle = '#061320';
+      roundRect(ctx, phoneX, phoneY, phoneWidth, phoneHeight, cornerRadius);
+      ctx.fill();
+      ctx.restore();
+
+      // Phone outer bezel rim (Ultra thin minimalist frame)
+      ctx.save();
+      ctx.lineWidth = width * 0.012;
+      ctx.strokeStyle = '#1e3852';
+      roundRect(ctx, phoneX, phoneY, phoneWidth, phoneHeight, cornerRadius);
+      ctx.stroke();
+
+      // Subtle cyan border highlight
+      ctx.lineWidth = 2;
+      ctx.strokeStyle = 'rgba(0, 219, 233, 0.35)';
+      roundRect(ctx, phoneX, phoneY, phoneWidth, phoneHeight, cornerRadius);
+      ctx.stroke();
+      ctx.restore();
+
+      // Screen Inner Clip Area
+      const innerMargin = width * 0.016;
+      const innerX = phoneX + innerMargin;
+      const innerY = phoneY + innerMargin;
+      const innerW = phoneWidth - (innerMargin * 2);
+      const innerH = phoneHeight - (innerMargin * 2);
+      const innerR = cornerRadius - innerMargin;
+
+      ctx.save();
+      roundRect(ctx, innerX, innerY, innerW, innerH, innerR);
+      ctx.clip();
+
+      // Inner Phone Screen Canvas Background
+      ctx.fillStyle = '#051424';
+      ctx.fillRect(innerX, innerY, innerW, innerH);
+
+      // Render Dynamic Island / Notch
+      const notchW = innerW * 0.28;
+      const notchH = innerW * 0.065;
+      const notchX = innerX + (innerW - notchW) / 2;
+      const notchY = innerY + (innerW * 0.024);
+      ctx.fillStyle = '#000000';
+      roundRect(ctx, notchX, notchY, notchW, notchH, notchH / 2);
+      ctx.fill();
+
+      // Camera lens glint
+      ctx.fillStyle = '#08253d';
+      ctx.beginPath();
+      ctx.arc(notchX + notchW * 0.78, notchY + notchH / 2, notchH * 0.25, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Dispatch specific screen content inside the frame
+      if (screen.id === 'screen1') drawHomeInner(innerX, innerY, innerW, innerH);
+      else if (screen.id === 'screen2') drawJournalInner(innerX, innerY, innerW, innerH);
+      else if (screen.id === 'screen3') drawChatInner(innerX, innerY, innerW, innerH);
+      else if (screen.id === 'screen4') drawMediaInner(innerX, innerY, innerW, innerH);
+      else if (screen.id === 'screen5') drawMerchInner(innerX, innerY, innerW, innerH);
+
+      // Render Bottom Floating Home Bar
+      const homeBarW = innerW * 0.35;
+      const homeBarH = 5;
+      const homeBarX = innerX + (innerW - homeBarW) / 2;
+      const homeBarY = innerY + innerH - 16;
+      ctx.fillStyle = 'rgba(255, 255, 255, 0.4)';
+      roundRect(ctx, homeBarX, homeBarY, homeBarW, homeBarH, 3);
+      ctx.fill();
+
+      ctx.restore(); // end screen clip
+    }
+
+    // --- SCREEN 1: Home VIP Screen Mockup ---
+    function drawHomeInner(x, y, w, h) {
+      let curY = y + (w * 0.12);
+
+      // Header Bar
+      ctx.textAlign = 'left';
+      ctx.font = "700 " + (w * 0.038) + "px 'Geist', sans-serif";
+      ctx.fillStyle = '#94a3b8';
+      ctx.fillText("Welcome back,", x + (w * 0.06), curY);
+      
+      ctx.font = "800 " + (w * 0.052) + "px 'Geist', sans-serif";
+      ctx.fillStyle = '#ffffff';
+      ctx.fillText("Ivan Antolin", x + (w * 0.06), curY + (w * 0.058));
+
+      // Avatar with glowing cyan VIP ring
+      const avatarR = w * 0.07;
+      const avatarX = x + w - (w * 0.06) - avatarR;
+      const avatarY = curY + (w * 0.02);
+      
+      ctx.save();
+      ctx.beginPath();
+      ctx.arc(avatarX, avatarY, avatarR, 0, Math.PI * 2);
+      ctx.fillStyle = '#0e243c';
+      ctx.fill();
+      ctx.lineWidth = 3;
+      ctx.strokeStyle = '#00dbe9';
+      ctx.stroke();
+
+      // Avatar initials
+      ctx.textAlign = 'center';
+      ctx.font = "700 " + (avatarR * 0.9) + "px 'Russo One', sans-serif";
+      ctx.fillStyle = '#00dbe9';
+      ctx.fillText("IA", avatarX, avatarY + (avatarR * 0.32));
+      ctx.restore();
+
+      curY += w * 0.14;
+
+      // Quick Actions Launchpad (Journal & Book Club Chat)
+      const cardGap = w * 0.035;
+      const cardW = (w - (w * 0.12) - cardGap) / 2;
+      const cardH = w * 0.22;
+
+      // Quick Action 1: Digital Journal
+      ctx.fillStyle = '#0a1929';
+      roundRect(ctx, x + (w * 0.06), curY, cardW, cardH, 14);
+      ctx.fill();
+      ctx.strokeStyle = 'rgba(0, 219, 233, 0.3)';
+      ctx.lineWidth = 1.5;
+      ctx.stroke();
+
+      ctx.fillStyle = '#00dbe9';
+      ctx.font = "800 " + (w * 0.036) + "px 'Russo One', sans-serif";
+      ctx.fillText("📖 JOURNAL", x + (w * 0.06) + 16, curY + 34);
+      ctx.fillStyle = '#94a3b8';
+      ctx.font = "500 " + (w * 0.028) + "px 'Geist', sans-serif";
+      ctx.fillText("Daily 5 Pillars", x + (w * 0.06) + 16, curY + 60);
+
+      // Quick Action 2: Book Club Chat
+      ctx.fillStyle = '#0a1929';
+      roundRect(ctx, x + (w * 0.06) + cardW + cardGap, curY, cardW, cardH, 14);
+      ctx.fill();
+      ctx.strokeStyle = 'rgba(236, 72, 153, 0.3)';
+      ctx.lineWidth = 1.5;
+      ctx.stroke();
+
+      ctx.fillStyle = '#ec4899';
+      ctx.font = "800 " + (w * 0.036) + "px 'Russo One', sans-serif";
+      ctx.fillText("💬 BOOK CHAT", x + (w * 0.06) + cardW + cardGap + 16, curY + 34);
+      ctx.fillStyle = '#94a3b8';
+      ctx.font = "500 " + (w * 0.028) + "px 'Geist', sans-serif";
+      ctx.fillText("Active Discussion", x + (w * 0.06) + cardW + cardGap + 16, curY + 60);
+
+      curY += cardH + (w * 0.05);
+
+      // 5 Pillars Streak Card
+      const streakH = w * 0.26;
+      ctx.fillStyle = '#081726';
+      roundRect(ctx, x + (w * 0.06), curY, w - (w * 0.12), streakH, 16);
+      ctx.fill();
+      ctx.strokeStyle = '#1a2d42';
+      ctx.stroke();
+
+      ctx.textAlign = 'left';
+      ctx.font = "700 " + (w * 0.032) + "px 'Russo One', sans-serif";
+      ctx.fillStyle = '#ffffff';
+      ctx.fillText("D.R.E.A.M. PILLAR PROGRESS", x + (w * 0.06) + 18, curY + 30);
+
+      // 5 Pillar Dots & Labels
+      const pillars = [
+        { name: 'D', color: '#f59e0b', label: 'Dest' },
+        { name: 'R', color: '#ec4899', label: 'Reason' },
+        { name: 'E', color: '#00dbe9', label: 'Energy' },
+        { name: 'A', color: '#eab308', label: 'Amigos' },
+        { name: 'M', color: '#38bdf8', label: 'Mindset' }
+      ];
+      const pSpacing = (w - (w * 0.12) - 36) / 5;
+      pillars.forEach((p, idx) => {
+        const px = x + (w * 0.06) + 24 + (idx * pSpacing);
+        const py = curY + 65;
+        ctx.beginPath();
+        ctx.arc(px, py, 14, 0, Math.PI * 2);
+        ctx.fillStyle = p.color;
+        ctx.fill();
+        ctx.textAlign = 'center';
+        ctx.font = "900 12px 'Russo One', sans-serif";
+        ctx.fillStyle = '#051424';
+        ctx.fillText(p.name, px, py + 4);
+
+        ctx.font = "600 10px 'Geist', sans-serif";
+        ctx.fillStyle = '#94a3b8';
+        ctx.fillText(p.label, px, py + 26);
+      });
+
+      curY += streakH + (w * 0.05);
+
+      // Latest Spotlight Media Hero Card
+      const heroH = w * 0.44;
+      ctx.fillStyle = '#0a1929';
+      roundRect(ctx, x + (w * 0.06), curY, w - (w * 0.12), heroH, 16);
+      ctx.fill();
+      ctx.strokeStyle = 'rgba(0, 219, 233, 0.25)';
+      ctx.stroke();
+
+      // Simulated video thumbnail inside
+      ctx.fillStyle = '#102235';
+      roundRect(ctx, x + (w * 0.06) + 10, curY + 10, w - (w * 0.12) - 20, heroH * 0.65, 12);
+      ctx.fill();
+
+      // Play button badge
+      const pBtnX = x + (w / 2);
+      const pBtnY = curY + 10 + (heroH * 0.325);
+      ctx.beginPath();
+      ctx.arc(pBtnX, pBtnY, 22, 0, Math.PI * 2);
+      ctx.fillStyle = '#00dbe9';
+      ctx.fill();
+      ctx.fillStyle = '#051424';
+      ctx.beginPath();
+      ctx.moveTo(pBtnX - 5, pBtnY - 8);
+      ctx.lineTo(pBtnX + 9, pBtnY);
+      ctx.lineTo(pBtnX - 5, pBtnY + 8);
+      ctx.fill();
+
+      ctx.textAlign = 'left';
+      ctx.font = "700 " + (w * 0.034) + "px 'Russo One', sans-serif";
+      ctx.fillStyle = '#ffffff';
+      ctx.fillText("• LATEST EPISODE: The Mindset Shift", x + (w * 0.06) + 16, curY + heroH - 16);
+    }
+
+    // --- SCREEN 2: 3D Digital Dream Journal Mockup ---
+    function drawJournalInner(x, y, w, h) {
+      const curY = y + (w * 0.14);
+
+      // Book Title Header
+      ctx.textAlign = 'center';
+      ctx.font = "900 " + (w * 0.052) + "px 'Russo One', sans-serif";
+      ctx.fillStyle = '#ffffff';
+      ctx.fillText("DIGITAL DREAM JOURNAL", x + (w / 2), curY);
+
+      ctx.font = "600 " + (w * 0.028) + "px 'Geist', sans-serif";
+      ctx.fillStyle = '#00dbe9';
+      ctx.fillText("A Daily Writing Exercise That Inspires You To Live Your Dream", x + (w / 2), curY + 22);
+
+      // 3D Realistic Notebook Book Cover Mockup
+      const bookW = w * 0.72;
+      const bookH = w * 1.05;
+      const bookX = x + (w - bookW) / 2;
+      const bookY = curY + 45;
+
+      // Shadow behind cover
+      ctx.save();
+      ctx.shadowColor = 'rgba(0, 0, 0, 0.9)';
+      ctx.shadowBlur = 35;
+      ctx.shadowOffsetX = 12;
+      ctx.shadowOffsetY = 18;
+      ctx.fillStyle = '#081421';
+      roundRect(ctx, bookX, bookY, bookW, bookH, 18);
+      ctx.fill();
+      ctx.restore();
+
+      // Cover gradient with gold rim
+      const coverGrad = ctx.createLinearGradient(bookX, bookY, bookX + bookW, bookY + bookH);
+      coverGrad.addColorStop(0, '#0f2438');
+      coverGrad.addColorStop(0.5, '#071626');
+      coverGrad.addColorStop(1, '#020810');
+      ctx.fillStyle = coverGrad;
+      roundRect(ctx, bookX, bookY, bookW, bookH, 18);
+      ctx.fill();
+      ctx.strokeStyle = '#f59e0b';
+      ctx.lineWidth = 2.5;
+      ctx.stroke();
+
+      // Spine Shading on left
+      const spineGrad = ctx.createLinearGradient(bookX, bookY, bookX + 24, bookY);
+      spineGrad.addColorStop(0, 'rgba(0,0,0,0.6)');
+      spineGrad.addColorStop(1, 'rgba(0,0,0,0)');
+      ctx.fillStyle = spineGrad;
+      roundRect(ctx, bookX, bookY, 24, bookH, {tl: 18, bl: 18, tr: 0, br: 0});
+      ctx.fill();
+
+      // 3D DREAM Title on Cover
+      ctx.textAlign = 'center';
+      ctx.font = "900 " + (bookW * 0.17) + "px 'Russo One', sans-serif";
+      
+      const dreamGrad = ctx.createLinearGradient(0, bookY + 60, 0, bookY + 120);
+      dreamGrad.addColorStop(0, '#fef08a');
+      dreamGrad.addColorStop(0.5, '#f59e0b');
+      dreamGrad.addColorStop(1, '#b45309');
+      ctx.fillStyle = dreamGrad;
+      ctx.fillText("DREAM", bookX + (bookW / 2), bookY + (bookH * 0.28));
+
+      // Sparkle stars
+      ctx.font = "700 16px 'Geist', sans-serif";
+      ctx.fillStyle = '#fef08a';
+      ctx.fillText("✦  JOURNAL  ✦", bookX + (bookW / 2), bookY + (bookH * 0.38));
+
+      // 5 Pillars Row on Cover
+      const pColors = ['#f59e0b', '#ec4899', '#00dbe9', '#eab308', '#38bdf8'];
+      const pLabels = ['D', 'R', 'E', 'A', 'M'];
+      const pSpacing = (bookW - 40) / 5;
+      pColors.forEach((col, idx) => {
+        const cx = bookX + 20 + (idx * pSpacing) + (pSpacing / 2);
+        const cy = bookY + (bookH * 0.52);
+        ctx.beginPath();
+        ctx.arc(cx, cy, 12, 0, Math.PI * 2);
+        ctx.fillStyle = col;
+        ctx.fill();
+        ctx.fillStyle = '#051424';
+        ctx.font = "900 11px 'Russo One', sans-serif";
+        ctx.fillText(pLabels[idx], cx, cy + 4);
+      });
+
+      // Name Card Badge on Cover
+      const namePlateW = bookW * 0.82;
+      const namePlateH = 44;
+      const namePlateX = bookX + (bookW - namePlateW) / 2;
+      const namePlateY = bookY + (bookH * 0.72);
+      ctx.fillStyle = '#0b1e32';
+      roundRect(ctx, namePlateX, namePlateY, namePlateW, namePlateH, 8);
+      ctx.fill();
+      ctx.strokeStyle = 'rgba(0, 219, 233, 0.4)';
+      ctx.lineWidth = 1.2;
+      ctx.stroke();
+
+      ctx.textAlign = 'center';
+      ctx.font = "700 12px 'Geist', sans-serif";
+      ctx.fillStyle = '#94a3b8';
+      ctx.fillText("OFFICIAL JOURNAL HOLDER", namePlateX + (namePlateW / 2), namePlateY + 18);
+      ctx.font = "800 14px 'Geist', sans-serif";
+      ctx.fillStyle = '#00dbe9';
+      ctx.fillText("Ivan Antolin", namePlateX + (namePlateW / 2), namePlateY + 34);
+
+      // Open Journal CTA Button
+      const ctaY = bookY + bookH + 28;
+      const ctaW = w * 0.72;
+      const ctaH = 48;
+      ctx.fillStyle = '#00dbe9';
+      roundRect(ctx, x + (w - ctaW) / 2, ctaY, ctaW, ctaH, 10);
+      ctx.fill();
+
+      ctx.textAlign = 'center';
+      ctx.font = "900 15px 'Russo One', sans-serif";
+      ctx.fillStyle = '#051424';
+      ctx.fillText("OPEN YOUR JOURNAL ➔", x + (w / 2), ctaY + 29);
+    }
+
+    // --- SCREEN 3: Book Club Chat & Reactions Mockup ---
+    function drawChatInner(x, y, w, h) {
+      let curY = y + (w * 0.12);
+
+      // Book Topic Ribbon Header
+      ctx.fillStyle = '#0a1929';
+      roundRect(ctx, x + (w * 0.05), curY, w - (w * 0.1), 54, 12);
+      ctx.fill();
+      ctx.strokeStyle = '#1a2d42';
+      ctx.stroke();
+
+      ctx.textAlign = 'left';
+      ctx.font = "800 13px 'Russo One', sans-serif";
+      ctx.fillStyle = '#00dbe9';
+      ctx.fillText("📚 THE COMPOUND EFFECT", x + (w * 0.05) + 16, curY + 24);
+      ctx.font = "500 11px 'Geist', sans-serif";
+      ctx.fillStyle = '#94a3b8';
+      ctx.fillText("Pillar 1: Destination • 42 Online Now", x + (w * 0.05) + 16, curY + 42);
+
+      curY += 72;
+
+      // Incoming Bubble 1 (Coach Joe)
+      const b1W = w * 0.65;
+      ctx.fillStyle = '#0d2238';
+      roundRect(ctx, x + (w * 0.05), curY, b1W, 72, 14);
+      ctx.fill();
+
+      ctx.font = "700 11px 'Geist', sans-serif";
+      ctx.fillStyle = '#ec4899';
+      ctx.fillText("Coach Joe Dreamz", x + (w * 0.05) + 14, curY + 20);
+      ctx.font = "500 12px 'Geist', sans-serif";
+      ctx.fillStyle = '#ffffff';
+      ctx.fillText("Small, smart choices + consistency", x + (w * 0.05) + 14, curY + 40);
+      ctx.fillText("= RADICAL DIFFERENCE. Who's in?", x + (w * 0.05) + 14, curY + 58);
+
+      curY += 88;
+
+      // Outgoing Bubble (User response - Glowing Cyan)
+      const b2W = w * 0.70;
+      const b2X = x + w - (w * 0.05) - b2W;
+      
+      // Swipe reply quote box inside
+      ctx.fillStyle = 'rgba(0, 219, 233, 0.15)';
+      roundRect(ctx, b2X, curY, b2W, 26, {tl: 14, tr: 14, bl: 0, br: 0});
+      ctx.fill();
+      ctx.font = "500 10px 'Geist', sans-serif";
+      ctx.fillStyle = '#00dbe9';
+      ctx.fillText("Replying to Coach Joe...", b2X + 12, curY + 17);
+
+      // Main outgoing bubble
+      ctx.fillStyle = '#00dbe9';
+      roundRect(ctx, b2X, curY + 26, b2W, 64, {tl: 0, tr: 0, bl: 14, br: 14});
+      ctx.fill();
+
+      ctx.font = "600 12px 'Geist', sans-serif";
+      ctx.fillStyle = '#051424';
+      ctx.fillText("Locked in! Journaled 10 pages today.", b2X + 14, curY + 50);
+      ctx.fillText("The momentum is real 🔥✓✓", b2X + 14, curY + 70);
+
+      // Floating Messenger Reaction Bar
+      const reactW = 160;
+      const reactH = 34;
+      const reactX = b2X + 20;
+      const reactY = curY + 98;
+      ctx.fillStyle = '#061320';
+      roundRect(ctx, reactX, reactY, reactW, reactH, 17);
+      ctx.fill();
+      ctx.strokeStyle = '#00dbe9';
+      ctx.lineWidth = 1.2;
+      ctx.stroke();
+
+      ctx.font = "14px 'Geist', sans-serif";
+      ctx.fillText("❤️  👍  🔥  👏  💡", reactX + 16, reactY + 22);
+
+      curY += 150;
+
+      // Incoming Bubble 2
+      const b3W = w * 0.58;
+      ctx.fillStyle = '#0d2238';
+      roundRect(ctx, x + (w * 0.05), curY, b3W, 54, 14);
+      ctx.fill();
+      ctx.font = "700 11px 'Geist', sans-serif";
+      ctx.fillStyle = '#38bdf8';
+      ctx.fillText("Marcus (Youth Leader)", x + (w * 0.05) + 14, curY + 20);
+      ctx.font = "500 12px 'Geist', sans-serif";
+      ctx.fillStyle = '#ffffff';
+      ctx.fillText("Chapter 3 highlights blew my mind!", x + (w * 0.05) + 14, curY + 40);
+
+      // Bottom Input Dock
+      const dockY = y + h - 85;
+      ctx.fillStyle = '#081726';
+      roundRect(ctx, x + (w * 0.05), dockY, w - (w * 0.1), 48, 24);
+      ctx.fill();
+      ctx.strokeStyle = 'rgba(0, 219, 233, 0.3)';
+      ctx.stroke();
+
+      ctx.font = "500 12px 'Geist', sans-serif";
+      ctx.fillStyle = '#64748b';
+      ctx.fillText("Share your reading note...", x + (w * 0.05) + 18, dockY + 29);
+
+      // Send button icon
+      ctx.beginPath();
+      ctx.arc(x + w - (w * 0.05) - 24, dockY + 24, 16, 0, Math.PI * 2);
+      ctx.fillStyle = '#00dbe9';
+      ctx.fill();
+      ctx.fillStyle = '#051424';
+      ctx.font = "900 13px 'Russo One', sans-serif";
+      ctx.fillText("➔", x + w - (w * 0.05) - 30, dockY + 28);
+    }
+
+    // --- SCREEN 4: Exclusive Media Streaming Mockup ---
+    function drawMediaInner(x, y, w, h) {
+      let curY = y + (w * 0.12);
+
+      // Typographic Header (Minimalist Apple/Spotify style)
+      ctx.textAlign = 'left';
+      ctx.font = "900 " + (w * 0.065) + "px 'Russo One', sans-serif";
+      ctx.fillStyle = '#ffffff';
+      ctx.fillText("MEDIA", x + (w * 0.06), curY + 10);
+
+      curY += 36;
+
+      // Modern Minimalist Text Tabs with Cyan Active Indicator
+      ctx.font = "700 12px 'Geist', sans-serif";
+      ctx.fillStyle = '#00dbe9';
+      ctx.fillText("LATEST", x + (w * 0.06), curY);
+      
+      ctx.fillStyle = '#64748b';
+      ctx.fillText("ACTIVITIES", x + (w * 0.06) + 70, curY);
+      ctx.fillText("D.R.E.A.M. PODCAST", x + (w * 0.06) + 165, curY);
+
+      // Cyan Underline on Active Tab
+      ctx.fillStyle = '#00dbe9';
+      ctx.fillRect(x + (w * 0.06), curY + 6, 48, 2.5);
+
+      curY += 24;
+
+      // 16:9 Hero Spotlight Card
+      const heroW = w - (w * 0.12);
+      const heroH = heroW * 0.58;
+      ctx.fillStyle = '#0a1929';
+      roundRect(ctx, x + (w * 0.06), curY, heroW, heroH, 16);
+      ctx.fill();
+      ctx.strokeStyle = '#1e3852';
+      ctx.stroke();
+
+      // Video gradient overlay
+      const vidGrad = ctx.createLinearGradient(0, curY, 0, curY + heroH);
+      vidGrad.addColorStop(0, '#10273f');
+      vidGrad.addColorStop(1, '#051424');
+      ctx.fillStyle = vidGrad;
+      roundRect(ctx, x + (w * 0.06), curY, heroW, heroH, 16);
+      ctx.fill();
+
+      // Big Cyan Play Button
+      const pbX = x + (w / 2);
+      const pbY = curY + (heroH / 2) - 10;
+      ctx.beginPath();
+      ctx.arc(pbX, pbY, 26, 0, Math.PI * 2);
+      ctx.fillStyle = '#00dbe9';
+      ctx.fill();
+      ctx.fillStyle = '#051424';
+      ctx.beginPath();
+      ctx.moveTo(pbX - 6, pbY - 10);
+      ctx.lineTo(pbX + 11, pbY);
+      ctx.lineTo(pbX - 6, pbY + 10);
+      ctx.fill();
+
+      // Spotlight Label
+      ctx.textAlign = 'left';
+      ctx.font = "700 10px 'Geist', sans-serif";
+      ctx.fillStyle = '#00dbe9';
+      ctx.fillText("• FEATURED ASSEMBLY", x + (w * 0.06) + 16, curY + heroH - 30);
+      ctx.font = "800 14px 'Russo One', sans-serif";
+      ctx.fillStyle = '#ffffff';
+      ctx.fillText("Dream Big: The Youth Keynote", x + (w * 0.06) + 16, curY + heroH - 12);
+
+      curY += heroH + 24;
+
+      // Compact Media List Items
+      for (let i = 0; i < 3; i++) {
+        const itemY = curY + (i * 72);
+        ctx.fillStyle = '#081726';
+        roundRect(ctx, x + (w * 0.06), itemY, heroW, 62, 12);
+        ctx.fill();
+        ctx.strokeStyle = '#13283e';
+        ctx.stroke();
+
+        // Mini thumbnail
+        ctx.fillStyle = '#0f2c4a';
+        roundRect(ctx, x + (w * 0.06) + 8, itemY + 8, 46, 46, 8);
+        ctx.fill();
+
+        ctx.font = "700 12px 'Russo One', sans-serif";
+        ctx.fillStyle = '#ffffff';
+        const titles = ["Episode 14: Overcoming Fear", "Workshop: Daily Habits of Champions", "Podcast #08: Guest Interview"];
+        ctx.fillText(titles[i], x + (w * 0.06) + 64, itemY + 26);
+
+        ctx.font = "500 10px 'Geist', sans-serif";
+        ctx.fillStyle = '#94a3b8';
+        ctx.fillText("24 mins • 1.2K Views", x + (w * 0.06) + 64, itemY + 44);
+      }
+    }
+
+    // --- SCREEN 5: Dream Closet Merch Store Mockup ---
+    function drawMerchInner(x, y, w, h) {
+      let curY = y + (w * 0.12);
+
+      // Header Bar
+      ctx.textAlign = 'left';
+      ctx.font = "900 " + (w * 0.058) + "px 'Russo One', sans-serif";
+      ctx.fillStyle = '#ffffff';
+      ctx.fillText("DREAM CLOSET", x + (w * 0.06), curY);
+
+      curY += 28;
+
+      // Full-bleed Product Showcase Hero Card
+      const pW = w - (w * 0.12);
+      const pH = w * 0.65;
+      ctx.fillStyle = '#0a1929';
+      roundRect(ctx, x + (w * 0.06), curY, pW, pH, 16);
+      ctx.fill();
+      ctx.strokeStyle = '#1a2d42';
+      ctx.stroke();
+
+      // Product silhouette / Hoodie mockup simulation
+      ctx.fillStyle = '#061320';
+      roundRect(ctx, x + (w * 0.06) + 12, curY + 12, pW - 24, pH - 24, 12);
+      ctx.fill();
+
+      // Streetwear Graphic on Hoodie
+      ctx.textAlign = 'center';
+      ctx.font = "900 " + (pW * 0.08) + "px 'Russo One', sans-serif";
+      ctx.fillStyle = '#00dbe9';
+      ctx.fillText("DREAM", x + (w / 2), curY + (pH * 0.45));
+      ctx.font = "700 " + (pW * 0.038) + "px 'Geist', sans-serif";
+      ctx.fillStyle = '#ffffff';
+      ctx.fillText("OFFICIAL HOODIE", x + (w / 2), curY + (pH * 0.58));
+
+      curY += pH + 18;
+
+      // Product Title & Price
+      ctx.textAlign = 'left';
+      ctx.font = "900 16px 'Russo One', sans-serif";
+      ctx.fillStyle = '#ffffff';
+      ctx.fillText("SIGNATURE OVERSIZED HOODIE", x + (w * 0.06), curY);
+      
+      ctx.font = "800 18px 'Geist', sans-serif";
+      ctx.fillStyle = '#00dbe9';
+      ctx.fillText("$45.00 USD", x + (w * 0.06), curY + 24);
+
+      curY += 46;
+
+      // Streetwear Size Selector Tiles
+      ctx.font = "700 11px 'Geist', sans-serif";
+      ctx.fillStyle = '#94a3b8';
+      ctx.fillText("SELECT SIZE", x + (w * 0.06), curY);
+
+      curY += 10;
+      const sizes = ['S', 'M', 'L', 'XL', '2XL'];
+      const sW = (pW - 32) / 5;
+      sizes.forEach((s, idx) => {
+        const sx = x + (w * 0.06) + (idx * (sW + 8));
+        const isActive = s === 'L';
+        ctx.fillStyle = isActive ? '#00dbe9' : '#081726';
+        roundRect(ctx, sx, curY, sW, 36, 8);
+        ctx.fill();
+        ctx.strokeStyle = isActive ? '#00dbe9' : '#1e3852';
+        ctx.stroke();
+
+        ctx.textAlign = 'center';
+        ctx.font = "700 12px 'Geist', sans-serif";
+        ctx.fillStyle = isActive ? '#051424' : '#ffffff';
+        ctx.fillText(s, sx + (sW / 2), curY + 22);
+      });
+
+      // Floating Glassmorphic Checkout Bar
+      const barY = y + h - 80;
+      ctx.fillStyle = 'rgba(10, 25, 41, 0.95)';
+      roundRect(ctx, x + (w * 0.06), barY, pW, 56, 14);
+      ctx.fill();
+      ctx.strokeStyle = 'rgba(0, 219, 233, 0.35)';
+      ctx.stroke();
+
+      // Cyan CTA Button
+      const btnW = pW * 0.88;
+      const btnX = x + (w - btnW) / 2;
+      ctx.fillStyle = '#00dbe9';
+      roundRect(ctx, btnX, barY + 7, btnW, 42, 10);
+      ctx.fill();
+
+      ctx.textAlign = 'center';
+      ctx.font = "900 13px 'Russo One', sans-serif";
+      ctx.fillStyle = '#051424';
+      ctx.fillText("ADD TO BAG • $45.00", x + (w / 2), barY + 33);
+    }
+
+    // --- GOOGLE PLAY FEATURE GRAPHIC (1024 x 500 px) ---
+    function drawGooglePlayFeatureGraphic(screen) {
+      const w = 1024;
+      const h = 500;
+      drawDeepSpaceBackground(w, h);
+
+      // Left Zone (45% Width): Brand & Hook
+      const leftCenterX = w * 0.28;
+      
+      // LiveJoeDreamz Crest
+      const crestR = 36;
+      ctx.save();
+      ctx.beginPath();
+      ctx.arc(leftCenterX, 110, crestR, 0, Math.PI * 2);
+      ctx.fillStyle = '#00dbe9';
+      ctx.shadowColor = 'rgba(0, 219, 233, 0.6)';
+      ctx.shadowBlur = 24;
+      ctx.fill();
+      ctx.restore();
+
+      ctx.textAlign = 'center';
+      ctx.font = "900 24px 'Russo One', sans-serif";
+      ctx.fillStyle = '#051424';
+      ctx.fillText("JD", leftCenterX, 118);
+
+      // Main Athletic Headline
+      ctx.font = "900 42px 'Russo One', sans-serif";
+      const titleGrad = ctx.createLinearGradient(0, 170, 0, 220);
+      titleGrad.addColorStop(0, '#ffffff');
+      titleGrad.addColorStop(1, '#94a3b8');
+      ctx.fillStyle = titleGrad;
+      ctx.fillText("LIVE YOUR DREAMS", leftCenterX, 205);
+
+      // Subtitle
+      ctx.font = "600 16px 'Geist', sans-serif";
+      ctx.fillStyle = '#00dbe9';
+      ctx.fillText("The Official App for Youth Empowerment & Community", leftCenterX, 240);
+
+      // 5 Pillar Dots
+      const pColors = ['#f59e0b', '#ec4899', '#00dbe9', '#eab308', '#38bdf8'];
+      const pSpacing = 28;
+      const pStartX = leftCenterX - ((pColors.length - 1) * pSpacing / 2);
+      pColors.forEach((col, idx) => {
+        ctx.beginPath();
+        ctx.arc(pStartX + (idx * pSpacing), 280, 7, 0, Math.PI * 2);
+        ctx.fillStyle = col;
+        ctx.fill();
+      });
+
+      // App Store Badges pill
+      ctx.fillStyle = 'rgba(0, 219, 233, 0.12)';
+      roundRect(ctx, leftCenterX - 110, 320, 220, 36, 18);
+      ctx.fill();
+      ctx.strokeStyle = 'rgba(0, 219, 233, 0.3)';
+      ctx.stroke();
+
+      ctx.font = "700 12px 'Geist', sans-serif";
+      ctx.fillStyle = '#f8fafc';
+      ctx.fillText("NOW ON GOOGLE PLAY", leftCenterX, 343);
+
+      // Right Zone (55% Width): Dual Phone Mockups
+      // Phone 1 (Back / Right): Home Screen
+      drawMiniPhoneMockup(w * 0.74, 150, 190, 380, 'home');
+      // Phone 2 (Front / Left offset): Dream Journal Cover
+      drawMiniPhoneMockup(w * 0.58, 90, 210, 420, 'journal');
+    }
+
+    function drawMiniPhoneMockup(x, y, pw, ph, type) {
+      ctx.save();
+      ctx.shadowColor = 'rgba(0, 0, 0, 0.85)';
+      ctx.shadowBlur = 30;
+      ctx.shadowOffsetY = 15;
+      ctx.fillStyle = '#051424';
+      roundRect(ctx, x, y, pw, ph, 20);
+      ctx.fill();
+      ctx.restore();
+
+      ctx.strokeStyle = '#1e3852';
+      ctx.lineWidth = 4;
+      roundRect(ctx, x, y, pw, ph, 20);
+      ctx.stroke();
+
+      ctx.save();
+      roundRect(ctx, x + 4, y + 4, pw - 8, ph - 8, 16);
+      ctx.clip();
+
+      ctx.fillStyle = '#051424';
+      ctx.fillRect(x + 4, y + 4, pw - 8, ph - 8);
+
+      if (type === 'journal') {
+        drawJournalInner(x + 4, y + 4, pw - 8, ph - 8);
+      } else {
+        drawHomeInner(x + 4, y + 4, pw - 8, ph - 8);
+      }
+      ctx.restore();
+    }
+
+    // --- MASTER APP STORE ICON (1024 x 1024 px) ---
+    function drawMasterIcon(screen) {
+      const w = 1024;
+      const h = 1024;
+
+      // Dark Space Canvas
+      const bgGrad = ctx.createLinearGradient(0, 0, w, h);
+      bgGrad.addColorStop(0, '#040e1b');
+      bgGrad.addColorStop(0.5, '#051424');
+      bgGrad.addColorStop(1, '#020810');
+      ctx.fillStyle = bgGrad;
+      ctx.fillRect(0, 0, w, h);
+
+      // Electric Cyan Aura
+      const aura = ctx.createRadialGradient(w/2, h/2, 100, w/2, h/2, 480);
+      aura.addColorStop(0, 'rgba(0, 219, 233, 0.35)');
+      aura.addColorStop(0.7, 'rgba(0, 219, 233, 0.05)');
+      aura.addColorStop(1, 'rgba(0,0,0,0)');
+      ctx.fillStyle = aura;
+      ctx.fillRect(0, 0, w, h);
+
+      // Outer Glow Ring
+      ctx.beginPath();
+      ctx.arc(w/2, h/2, 380, 0, Math.PI * 2);
+      ctx.lineWidth = 14;
+      ctx.strokeStyle = '#00dbe9';
+      ctx.shadowColor = 'rgba(0, 219, 233, 0.8)';
+      ctx.shadowBlur = 40;
+      ctx.stroke();
+
+      // Master LIVEJOEDREAMZ Crest Initials
+      ctx.textAlign = 'center';
+      ctx.font = "900 240px 'Russo One', sans-serif";
+      
+      const textGrad = ctx.createLinearGradient(0, h/2 - 120, 0, h/2 + 120);
+      textGrad.addColorStop(0, '#ffffff');
+      textGrad.addColorStop(0.5, '#00dbe9');
+      textGrad.addColorStop(1, '#051424');
+      ctx.fillStyle = textGrad;
+      ctx.fillText("JD", w/2, h/2 + 80);
+
+      // Subtitle
+      ctx.font = "900 48px 'Russo One', sans-serif";
+      ctx.fillStyle = '#ffffff';
+      ctx.fillText("LIVEJOEDREAMZ", w/2, h/2 + 220);
+
+      // 5 Pillars Dot Ribbon
+      const pColors = ['#f59e0b', '#ec4899', '#00dbe9', '#eab308', '#38bdf8'];
+      const pSpacing = 50;
+      const startX = w/2 - ((pColors.length - 1) * pSpacing / 2);
+      pColors.forEach((col, idx) => {
+        ctx.beginPath();
+        ctx.arc(startX + (idx * pSpacing), h/2 + 280, 12, 0, Math.PI * 2);
+        ctx.fillStyle = col;
+        ctx.fill();
+      });
+    }
+
+    // Export Current PNG
+    function exportCurrentPNG() {
+      const screen = state.screens.find(s => s.id === state.activeScreenId);
+      const filename = `LiveJoeDreamz_${state.platform.toUpperCase()}_${screen.id}.png`;
+      
+      canvas.toBlob((blob) => {
+        const link = document.createElement('a');
+        link.download = filename;
+        link.href = URL.createObjectURL(blob);
+        link.click();
+        showToast(`Downloaded: ${filename}`);
+      }, 'image/png');
+    }
+
+    // Export All Store Assets Sequentially
+    async function exportAllPNGs() {
+      showToast('Rendering complete store kit...');
+      const originalScreenId = state.activeScreenId;
+
+      for (const screen of state.screens) {
+        state.activeScreenId = screen.id;
+        drawCurrentCanvas();
+        await new Promise(r => setTimeout(r, 200));
+
+        await new Promise((resolve) => {
+          canvas.toBlob((blob) => {
+            const filename = `LiveJoeDreamz_${screen.id}_${canvas.width}x${canvas.height}.png`;
+            const link = document.createElement('a');
+            link.download = filename;
+            link.href = URL.createObjectURL(blob);
+            link.click();
+            resolve();
+          }, 'image/png');
+        });
+        await new Promise(r => setTimeout(r, 350));
+      }
+
+      state.activeScreenId = originalScreenId;
+      drawCurrentCanvas();
+      showToast('🎉 All store assets downloaded successfully!');
+    }
+
+    function showToast(msg) {
+      const toast = document.getElementById('studioToast');
+      document.getElementById('toastMessage').innerText = msg;
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 3000);
+    }
+
+    // Initialize on load
+    window.addEventListener('load', init);
+  </script>
+</body>
+</html>
+

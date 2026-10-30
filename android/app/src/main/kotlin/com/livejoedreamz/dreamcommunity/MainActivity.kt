@@ -1,0 +1,6 @@
+package com.livejoedreamz.dreamcommunity
+
+import io.flutter.embedding.android.FlutterFragmentActivity
+
+class MainActivity : FlutterFragmentActivity()
+

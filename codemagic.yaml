@@ -1,0 +1,93 @@
+# ==============================================================================
+# Codemagic CI/CD Configuration for LiveJoeDreamz Mobile App
+# Flutter Cross-Platform Cloud Build Engine (iOS & Android)
+# ==============================================================================
+
+workflows:
+  # ----------------------------------------------------------------------------
+  # Workflow 1: iOS Build (Test & Verification / No Apple Developer Account Needed)
+  # ----------------------------------------------------------------------------
+  ios-test-build:
+    name: iOS Test Build (No Code Signing Required)
+    instance_type: mac_mini_m2
+    max_build_duration: 60
+    environment:
+      flutter: stable
+      xcode: latest
+      cocoapods: default
+    triggering:
+      events:
+        - push
+      branch_patterns:
+        - pattern: 'main'
+          include: true
+    scripts:
+      - name: Get Flutter Packages
+        script: |
+          flutter packages pub get
+      - name: Install iOS CocoaPods
+        script: |
+          cd ios && pod install
+      - name: Build iOS Application (Release Mode, No Code Sign)
+        script: |
+          flutter build ios --release --no-codesign
+    artifacts:
+      - build/ios/iphoneos/Runner.app
+      - /tmp/xcodebuild_logs/*.log
+
+  # ----------------------------------------------------------------------------
+  # Workflow 2: iOS Production & TestFlight Distribution
+  # (Requires Apple Developer Program Account & App Store Connect API Key)
+  # ----------------------------------------------------------------------------
+  ios-production:
+    name: iOS Production & TestFlight Release
+    instance_type: mac_mini_m2
+    max_build_duration: 60
+    environment:
+      flutter: stable
+      xcode: latest
+      cocoapods: default
+      groups:
+        - app_store_credentials # Configure in Codemagic UI: App Store Connect API Key
+    scripts:
+      - name: Set up code signing settings on Xcode project
+        script: |
+          xcode-project use-profiles
+      - name: Get Flutter Packages
+        script: |
+          flutter packages pub get
+      - name: Install iOS CocoaPods
+        script: |
+          cd ios && pod install
+      - name: Build iOS IPA Package
+        script: |
+          flutter build ipa --release \
+            --export-options-plist=/Users/builder/export_options.plist
+    artifacts:
+      - build/ios/ipa/*.ipa
+      - /tmp/xcodebuild_logs/*.log
+    publishing:
+      app_store_connect:
+        auth: integration
+        submit_to_testflight: true
+        expire_build_submitted_for_review: true
+
+  # ----------------------------------------------------------------------------
+  # Workflow 3: Android Production Release (Google Play App Bundle - .aab)
+  # ----------------------------------------------------------------------------
+  android-production:
+    name: Android Release (.aab for Google Play Store)
+    instance_type: mac_mini_m2
+    max_build_duration: 45
+    environment:
+      flutter: stable
+    scripts:
+      - name: Get Flutter Packages
+        script: |
+          flutter packages pub get
+      - name: Build Android App Bundle (.aab)
+        script: |
+          flutter build appbundle --release
+    artifacts:
+      - build/app/outputs/bundle/release/*.aab
+
