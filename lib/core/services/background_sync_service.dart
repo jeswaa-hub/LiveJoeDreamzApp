@@ -18,33 +18,8 @@ class BackgroundSyncService {
 
   Future<void> initialize() async {
     if (_isInitialized) return;
-    if (kIsWeb) return;
-
-    final service = FlutterBackgroundService();
-
-    try {
-      await service.configure(
-        androidConfiguration: AndroidConfiguration(
-          onStart: onBackgroundServiceStart,
-          autoStart: true,
-          isForegroundMode: false,
-          notificationChannelId: 'dream_community_notifications_v2',
-          initialNotificationTitle: 'D.R.E.A.M. Livejoe',
-          initialNotificationContent: 'Notification service active',
-          foregroundServiceNotificationId: 9999,
-        ),
-        iosConfiguration: IosConfiguration(
-          autoStart: true,
-          onForeground: onBackgroundServiceStart,
-          onBackground: onIosBackground,
-        ),
-      );
-
-      _isInitialized = true;
-      debugPrint('[BackgroundSyncService] Configured successfully.');
-    } catch (e) {
-      debugPrint('[BackgroundSyncService] Initialize error (rebuild required): $e');
-    }
+    _isInitialized = true;
+    debugPrint('[BackgroundSyncService] Production FCM & PendingApprovalSyncService active.');
   }
 }
 
