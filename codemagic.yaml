@@ -47,8 +47,8 @@ workflows:
       flutter: stable
       xcode: latest
       cocoapods: default
-      groups:
-        - app_store_credentials # Configure in Codemagic UI: App Store Connect API Key
+      # groups:
+      #   - app_store_credentials # Uncomment when App Store Connect API Key is set in Codemagic UI
     scripts:
       - name: Set up code signing settings on Xcode project
         script: |
@@ -66,11 +66,12 @@ workflows:
     artifacts:
       - build/ios/ipa/*.ipa
       - /tmp/xcodebuild_logs/*.log
-    publishing:
-      app_store_connect:
-        auth: integration
-        submit_to_testflight: true
-        expire_build_submitted_for_review: true
+    # publishing:
+    #   # Uncomment and configure once Apple Developer Program is approved
+    #   app_store_connect:
+    #     auth: integration
+    #     submit_to_testflight: true
+    #     expire_build_submitted_for_review: true
 
   # ----------------------------------------------------------------------------
   # Workflow 3: Android Production Release (Google Play App Bundle - .aab)
