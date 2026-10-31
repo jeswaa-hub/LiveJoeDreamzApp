@@ -22,12 +22,10 @@ workflows:
         - pattern: 'main'
           include: true
     scripts:
-      - name: Get Flutter Packages
+      - name: Get Flutter Packages & Setup iOS Config
         script: |
           flutter packages pub get
-      - name: Install iOS CocoaPods
-        script: |
-          cd ios && pod install
+          flutter build ios --config-only
       - name: Build iOS Application (Release Mode, No Code Sign)
         script: |
           flutter build ios --release --no-codesign
@@ -53,12 +51,10 @@ workflows:
       - name: Set up code signing settings on Xcode project
         script: |
           xcode-project use-profiles
-      - name: Get Flutter Packages
+      - name: Get Flutter Packages & Setup iOS Config
         script: |
           flutter packages pub get
-      - name: Install iOS CocoaPods
-        script: |
-          cd ios && pod install
+          flutter build ios --config-only
       - name: Build iOS IPA Package
         script: |
           flutter build ipa --release \
